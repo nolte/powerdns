@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: discourse/powerdns
-  tag: "{{ .Chart.AppVersion }}"
+  tag: latest
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
