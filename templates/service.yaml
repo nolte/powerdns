@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "powerdns.fullname" . }}-udp
   annotations:
-    metallb.universe.tf/allow-shared-ip: {{ include "powerdns.fullname" . }}
+    metallb.universe.tf/allow-shared-ip: {{ include "metallb.allow-shared-ip" . }}
   labels:
 {{ include "powerdns.labels" . | indent 4 }}
 spec:
@@ -27,7 +27,7 @@ kind: Service
 metadata:
   name: {{ include "powerdns.fullname" . }}-tcp
   annotations:
-    metallb.universe.tf/allow-shared-ip: {{ include "powerdns.fullname" . }}
+    metallb.universe.tf/allow-shared-ip: {{ include "metallb.allow-shared-ip" . }}
   labels:
 {{ include "powerdns.labels" . | indent 4 }}
 spec:
