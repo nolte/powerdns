@@ -60,8 +60,38 @@ tolerations: []
 
 affinity: {}
 
+env: |
+  - name: PGSQL_HOST
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "powerdns.fullname" . }}
+        key: postgres_host
+  - name: PGSQL_PORT
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "powerdns.fullname" . }}
+        key: postgres_port
+  - name: PGSQL_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "powerdns.fullname" . }}
+        key: postgres_username
+  - name: PGSQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "powerdns.fullname" . }}
+        key: postgres_password
+  - name: PGSQL_DATABASE
+    valueFrom:
+      secretKeyRef:
+        name: {{ include "powerdns.fullname" . }}
+        key: postgres_database
+  - name: PGSQL_DNSSEC
+    value: {{if (.Values.powerdns.dnssec)}}"yes"{{else}}"no"{{ end }}
+
 powerdns:
   postgres:
+    createSecret: true
     host: localhost
     port: 5432
     username: pdns
