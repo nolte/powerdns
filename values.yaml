@@ -12,6 +12,8 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+# metallbAllowSharedIpOverride - override the key for shared ip for metallb
 metallbAllowSharedIpOverride: ""
 
 serviceAccount:
